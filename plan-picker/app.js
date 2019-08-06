@@ -7,8 +7,28 @@ let PlanComponent = {
       type: String,
       // default: "Baccan",
       required: true
-    }
+    },
     // price: Number
+    selectedPlan: {
+      type: String
+    }
+  },
+  computed: {
+    isSelected() {
+      return this.name === this.selectedPlan;
+    }
+  },
+  // data: () => ({
+  //   selected: false
+  // }),
+  methods: {
+    select() {
+      // Custom event
+      // (nome do evento a ser emitido, dados a serem passados como paylaod)
+      this.$emit("select", this.name);
+
+      // this.selected = true;
+    }
   }
 };
 
@@ -18,8 +38,14 @@ let PlanPickerComponent = {
     plan: PlanComponent
   },
   data: () => ({
-    plans: ["The Single", "The Curious", "The Addict"]
-  })
+    plans: ["The Single", "The Curious", "The Addict"],
+    selectedPlan: null
+  }),
+  methods: {
+    selectPlan(plan) {
+      this.selectedPlan = plan;
+    }
+  }
 };
 
 new Vue({
