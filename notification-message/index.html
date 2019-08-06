@@ -11,29 +11,26 @@
       <h1>Notifcation Center</h1>
 
       <notification-message type="error" header="Oh no!">
-        <p>Your flight has been <b>canceled</b>!</p>
-      </notification-message>
-
-      <notification-message type="success" header="Oh yeah!">
-        <p>Your flight is on time</p>
+        <p>
+          Your flight has been <b>canceled</b>. Click <a href="">here</a> to
+          find another flight.
+        </p>
       </notification-message>
 
       <notification-message>
-        Good Morning
+        <p>We are launching a new feature tomorrow.</p>
       </notification-message>
     </div>
 
     <!-- Template for Notification Message -->
     <script type="text/x-template" id="notification-message-template">
-      <!-- Notification Message Markup -->
-      <!-- Types: info, warning, error, success -->
       <div class="ui message" :class="type" v-if="!hidden">
-          <i class="close icon" @click="hide"></i>
-          <div class="header">
-            {{header}}
-          </div>
-          <slot></slot>
+        <i @click="hide" class="close icon"></i>
+        <div class="header">
+          {{header}}
         </div>
+        <slot></slot>
+      </div>
     </script>
 
     <!-- Import Vue.js -->
@@ -50,14 +47,12 @@
           },
           header: {
             type: String,
-            default: "Information"
+            default: "Info"
           }
         },
-        data() {
-          return {
-            hidden: false
-          };
-        },
+        data: () => ({
+          hidden: false
+        }),
         methods: {
           hide() {
             this.hidden = true;
@@ -65,7 +60,8 @@
         }
       });
       new Vue({
-        el: "#app"
+        el: "#app",
+        data: {}
       });
     </script>
   </body>
