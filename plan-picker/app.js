@@ -1,5 +1,5 @@
-let PlanComponent = {
-  template: "#plan-template",
+let PlanPickerItemComponent = {
+  template: "#plan-picker-item-template",
   // props: ["name"] // definir as props como um array não temos muito controle
   // Uma boa pratica e declara-lo como um objeto
   props: {
@@ -35,7 +35,7 @@ let PlanComponent = {
 let PlanPickerComponent = {
   template: "#plan-picker-template",
   components: {
-    plan: PlanComponent
+    "plan-picker-item": PlanPickerItemComponent
   },
   data: () => ({
     plans: ["The Single", "The Curious", "The Addict"],
